@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db": "docker compose up -d db",
-    "with-admin": "docker compose up -d db pgadmin"
+    "with-pgadmin": "docker compose up -d db pgadmin"
   },
   "keywords": [],
   "author": "",
