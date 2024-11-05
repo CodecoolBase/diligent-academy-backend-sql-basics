@@ -1,0 +1,13 @@
+{
+  "name": "diligent-academy-backend-sql-basics",
+  "version": "1.0.0",
+  "description": "## Setup the repo",
+  "main": "index.js",
+  "scripts": {
+    "db": "docker compose up -d db",
+    "with-admin": "docker compose up -d db pgadmin"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
