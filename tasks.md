@@ -56,6 +56,10 @@ Save the queries to the `task2.sql`.
 
 ## Task 3: Practice the joins (Data Query)
 
+Create queries to execute the following tasks.
+
+Save the queries to the `task3.sql`.
+
 - Show the pet's kind's name next to the pet.
 - Match made in heaven: Show the pet's owner's name next to the pet. Show only the pets who has an owner.
 - Wild pets among us: Show the pet's owner's name next to the pet. Show those pets too who does not have an owner (but do not show the owners who does not have pets).
@@ -67,6 +71,10 @@ Save the queries to the `task2.sql`.
 - https://www.postgresql.org/docs/17/queries-table-expressions.html
 
 ## Task 4: Practice the grouping (Data query)
+
+Create queries to execute the following tasks.
+
+Save the queries to the `task4.sql`.
 
 - Count how many pets we have.
 - Count how many pets belongs to each kind. Show a counter and the kind name next to each other.
@@ -81,3 +89,42 @@ Save the queries to the `task2.sql`.
 
 - https://www.postgresql.org/docs/17/queries-table-expressions.html#QUERIES-GROUP
 
+## Task 5: Demo: Plan together the movie database
+
+We have the following use case (it can be familiar from the API planning task):
+
+- We have to create an database model for our movies API.
+- We want to store the movie's title, the main genre, plot, release date and of course the actors.
+- The information we want to store for an actor: name, the born date, the born location and their height.
+- Each movie and actor has a unique numeric ID.
+
+## Task 6: Define the tables for the movie database
+
+Work in the `task6.sql`.
+
+- Define first the tables and add their columns, take care of the column's types.
+- Take care of the primary keys.
+- Define the foreign keys, create conjunction tables if needed.
+- The foreign keys defines constrains. The tables should be filled data with the proper order. Figure out this order.
+- Execute the SQL you created to define the tables.
+
+## Task 7: Use ChatGPT to create example data
+
+Work in `task7.sql`.
+
+- Fill the table with data with the help of ChatGPT. You can give it your schema.
+- Generate about 20 entries of the movies and 40 entries of actors.
+
+## Task 8: Demo: Check the performance of a query
+
+- We want to sort the movies by release date. Create a query for that and analyze.
+- What we need to change to have better performance?
+
+## Task 9: Analyze the following queries
+
+- We also want to filter the movies by the main genre.
+- We want to search for a move by a partial title.
+- We want to order the actors by their height.
+
+Measure each query's performance, figure out where to add indexes to
+improve the performance.
