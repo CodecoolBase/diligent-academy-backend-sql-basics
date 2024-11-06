@@ -1,32 +1,32 @@
-drop table if exists pet_owner;
-drop table if exists pet_kind;
-drop table if exists pet;
+drop table if exists pets;
+drop table if exists pet_owners;
+drop table if exists pet_kinds;
 
 
-create table pet_owner (
+create table pet_owners (
 	id serial primary key,
 	name varchar(50),
 	age integer
 );
 
-create table pet_kind (
+create table pet_kinds (
 	id serial primary key,
 	name varchar(20)
 );
 
-create table pet (
+create table pets (
 	id serial primary key,
 	name varchar(50),
 	age integer,
 	weight_in_kg numeric,
-	pet_owner_id integer,
-	pet_kind_id  integer,
-	foreign key (pet_owner_id) references pet_owner (id),
-	foreign key (pet_kind_id) references pet_kind (id)
+	owner_id integer,
+	kind_id  integer,
+	foreign key (owner_id) references pet_owners (id),
+	foreign key (kind_id) references pet_kinds (id)
 );
 
 -- Insert pet owners
-INSERT INTO pet_owner (name, age) VALUES 
+INSERT INTO pet_owners (name, age) VALUES 
 ('Alice', 30),
 ('Bob', 45),
 ('Carol', 28),
@@ -39,13 +39,13 @@ INSERT INTO pet_owner (name, age) VALUES
 ('Julia', 38);
 
 -- Insert pet kinds
-INSERT INTO pet_kind (name) VALUES 
+INSERT INTO pet_kinds (name) VALUES 
 ('dog'),
 ('cat'),
 ('reptile'),
 ('insect');
 
-INSERT INTO pet (name, age, weight_in_kg, pet_owner_id, pet_kind_id) VALUES 
+INSERT INTO pets (name, age, weight_in_kg, owner_id, kind_id) VALUES 
 ('Bella', 3, 12.5, 1, 1),    -- Dog owned by Alice
 ('Max', 5, 15.0, 1, 1),      -- Dog owned by Alice
 ('Whiskers', 2, 4.5, 2, 2),  -- Cat owned by Bob
