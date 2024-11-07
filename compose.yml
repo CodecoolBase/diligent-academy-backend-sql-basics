@@ -1,6 +1,6 @@
 services:
   db:
-    image: postgres
+    image: postgres:14
     restart: always
     environment:
       POSTGRES_PASSWORD: dbpassword
@@ -8,6 +8,7 @@ services:
       POSTGRES_DB: postgres
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - ./pagila.sql:/pagila.sql
     ports:
       - 5400:5432
 

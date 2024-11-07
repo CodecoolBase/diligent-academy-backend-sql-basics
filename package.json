@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "db": "docker compose up -d db",
-    "with-pgadmin": "docker compose up -d db pgadmin"
+    "with-pgadmin": "docker compose up -d db pgadmin",
+    "create-pagila-db": "docker compose exec db  bash -c \"/usr/bin/psql -d postgres://postgres:dbpassword@localhost/postgres -c 'CREATE DATABASE pagila;'\"",
+    "load-pagila-data": "docker compose exec db  bash -c \"/usr/bin/psql -d postgres://postgres:dbpassword@localhost/pagila -f /pagila.sql\""
   },
   "keywords": [],
   "author": "",

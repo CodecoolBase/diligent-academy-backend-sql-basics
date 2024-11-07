@@ -18,6 +18,14 @@ To check if the data is inserted properly:
 On a given database anytime you can open the `Query Tools` to execute queries
 on the database.
 
+## Task 0: Get familiar with the data structure
+
+- Open the pets SQL. 
+- What are the entities used in this data model?
+- What tables are created?
+- What are the relations between the tables (one, many...)?
+- What kind of constrains provide these relations?
+
 ## Task 1: Insert, delete, update (Data manipulation)
 
 Create queries to execute the following tasks.
@@ -26,7 +34,7 @@ Save the queries to the `task1.sql`.
 
 - Add yourself to the database.
 - Add your pet or your imaginary pet to the database.
-- Your pet name is not respectful enough. Change it names by adding a "Mr." in front of it.
+- Your pet name is not respectful enough. Change it names by adding a "Mr." or "Ms." in front of it.
 - Increase every pets' age if they are older than 5 years.
 - Remove Simba from the database.
 
@@ -108,6 +116,13 @@ Work in the `task6.sql`.
 - The foreign keys defines constrains. The tables should be filled data with the proper order. Figure out this order.
 - Execute the SQL you created to define the tables.
 
+### Background materials
+
+- https://www.postgresql.org/docs/17/ddl-basics.html
+- https://www.postgresql.org/docs/17/ddl-constraints.html#DDL-CONSTRAINTS-FK
+- https://www.postgresql.org/docs/17/datatype-datetime.html
+
+
 ## Task 7: Use ChatGPT to create example data
 
 Work in `task7.sql`.
@@ -117,14 +132,44 @@ Work in `task7.sql`.
 
 ## Task 8: Demo: Check the performance of a query
 
-- We want to sort the movies by release date. Create a query for that and analyze.
-- What we need to change to have better performance?
+First load some example data which is large enough:
 
-## Task 9: Analyze the following queries
+Pagila DB is a sample data for a fictional DVD rental store. Pagila includes tables for films, actors, film categories, stores, customers, payments, and more.
 
-- We also want to filter the movies by the main genre.
-- We want to search for a move by a partial title.
-- We want to order the actors by their height.
+- Create the "Pagila" db: `npm run create-pagila-db`
+- Load the data to "Pagila" db: `npm run load-pagila-data` 
 
-Measure each query's performance, figure out where to add indexes to
-improve the performance.
+- List all films. Analyze the query.
+- Search for the film titled "ALABAMA DEVIL", analyze the query.
+- Repeat the previous search, but display only the title. Analyze the query.
+- Remove the idx_title and repeat the search. Analyze the query.
+
+- Search for the  films where the replacement cost is larger than 15 
+  but less than 20. Analyze the query.
+- Create an index for the replacement cost and repeat the query. Analyze the query.
+- Sort the query by replacement cost. Analyze the query.
+
+### Background material
+
+- https://pganalyze.com/docs/explain/basics-of-postgres-query-planning
+- https://pganalyze.com/docs/explain/scan-nodes/sequential-scan
+- https://pganalyze.com/docs/explain/scan-nodes/index-scan
+- https://pganalyze.com/docs/explain/scan-nodes/index-only-scan
+
+Deep dive:
+
+- https://www.postgresql.org/docs/current/using-explain.html
+
+## Task 9: Analyze the following queries in Pagila
+
+- We want to get a customer's rental by a given customer Id. Create a query and analyze.
+  - What search method(s) are figured out by the planner?
+  - What is the initial planned cost (time) and the planned total cost of the selected method?
+  - What are the actual initial and total costs.
+  - How many rows removed by the filter?
+- Add an index to the customer Id, analyze the query again.
+  - What is changed in the search methods?
+  - How does the costs are changed?
+- We want to get also the customer's first name and the last name.
+  - What planning nodes are produced by the join?
+
