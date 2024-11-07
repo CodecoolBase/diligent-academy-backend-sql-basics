@@ -139,6 +139,14 @@ Pagila DB is a sample data for a fictional DVD rental store. Pagila includes tab
 - Create the "Pagila" db: `npm run create-pagila-db`
 - Load the data to "Pagila" db: `npm run load-pagila-data` 
 
+These steps can help to analyze the result:
+- Paste the results to the analyzer: https://explain.dalibo.com/plan
+- What kind of nodes do you see, what is their hierarchy?
+- Where was the most execution time was spent?
+- Where was the **row** estimation is significantly different from the actual?
+- Are there any long running seq. scans with a lot of filtered result?
+
+Analyze the following queries:
 - List all films. Analyze the query.
 - Search for the film titled "ALABAMA DEVIL", analyze the query.
 - Repeat the previous search, but display only the title. Analyze the query.
@@ -149,12 +157,11 @@ Pagila DB is a sample data for a fictional DVD rental store. Pagila includes tab
 - Create an index for the replacement cost and repeat the query. Analyze the query.
 - Sort the query by replacement cost. Analyze the query.
 
+
 ### Background material
 
+- https://www.cybertec-postgresql.com/en/how-to-interpret-postgresql-explain-analyze-output/
 - https://pganalyze.com/docs/explain/basics-of-postgres-query-planning
-- https://pganalyze.com/docs/explain/scan-nodes/sequential-scan
-- https://pganalyze.com/docs/explain/scan-nodes/index-scan
-- https://pganalyze.com/docs/explain/scan-nodes/index-only-scan
 
 Deep dive:
 
@@ -172,4 +179,6 @@ Deep dive:
   - How does the costs are changed?
 - We want to get also the customer's first name and the last name.
   - What planning nodes are produced by the join?
+
+
 
